@@ -5,22 +5,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 
-
 const app = express();
-
-dotenv.config();
-
-app.use(bodyParser.json({limit: "30mb", extended: true}));
-
-app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
-
-const corsOptions ={
-    origin:'http://localhost:3000', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-
-app.use(cors(corsOptions));
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(cors());
 
 app.use('/posts', postRoutes);
 
@@ -28,7 +16,7 @@ app.get('/', (req,res) => {
     res.send('Hello to memories API');
 })
 
-// const CONNECTION_URL = "mongodb+srv://chalkeavry:neelchalke@cluster0.orujxlq.mongodb.net/?retryWrites=true&w=majority";
+const CONNECTION_URL = "mongodb+srv://chalkeavry:neelchalke@cluster0.orujxlq.mongodb.net/?retryWrites=true&w=majority";
 
 const PORT = process.env.PORT;
 
