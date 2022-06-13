@@ -14,7 +14,13 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 
-app.use(cors());
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+
+app.use(cors(corsOptions));
 
 app.use('/posts', postRoutes);
 
@@ -24,8 +30,8 @@ app.get('/', (req,res) => {
 
 // const CONNECTION_URL = "mongodb+srv://chalkeavry:neelchalke@cluster0.orujxlq.mongodb.net/?retryWrites=true&w=majority";
 
-const PORT = process.env.PORT;
+const PORT = PORT;
 
-mongoose.connect(process.env.CONNECTION_URL).then(() => app.listen( PORT || 5000 , () => console.log(`Server is running on: ${PORT} `))).catch((err) => console.log(err))
+mongoose.connect(CONNECTION_URL).then(() => app.listen( PORT || 5000 , () => console.log(`Server is running on: ${PORT} `))).catch((err) => console.log(err))
 
 // mongoose.set('useFindAndModify', false);
