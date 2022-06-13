@@ -1,1 +1,1 @@
-web:node routes/posts.js
+web: node server/routes/posts.js
