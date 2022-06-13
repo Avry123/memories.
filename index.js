@@ -24,8 +24,8 @@ app.get('/', (req,res) => {
 
 // const CONNECTION_URL = "mongodb+srv://chalkeavry:neelchalke@cluster0.orujxlq.mongodb.net/?retryWrites=true&w=majority";
 
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
-mongoose.connect(process.env.CONNECTION_URL).then(() => app.listen( process.env.PORT || 5000 , () => console.log(`Server is running on: ${PORT} `))).catch((err) => console.log(err))
+mongoose.connect(process.env.CONNECTION_URL).then(() => app.listen( PORT || 5000 , () => console.log(`Server is running on: ${PORT} `))).catch((err) => console.log(err))
 
 // mongoose.set('useFindAndModify', false);
